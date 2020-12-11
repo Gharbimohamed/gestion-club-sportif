@@ -1,11 +1,18 @@
 package IRHD.Serviceentraienement.models;
 
+import org.hibernate.Incubating;
+
+
+import javax.persistence.*;
 import java.util.Date;
 
-public class entrainement {
-
-    private int id_entrainement;
-    private String type_entraienement;
+@Entity
+@Table(name = "entrainement", schema="gestion")
+public class entrainement {// class name should be In UpperCase the first letter
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id_entrainement; //each class has an id, directly name it id not id_equipent //instead of int user Integer
+    private String categorie; // la categorie de l'equipe minime cadet junior ...etc.
     private Date date;
 
     public int getId_entrainement() {
@@ -16,14 +23,6 @@ public class entrainement {
         this.id_entrainement = id_entrainement;
     }
 
-    public String getType_entraienement() {
-        return type_entraienement;
-    }
-
-    public void setType_entraienement(String type_entraienement) {
-        this.type_entraienement = type_entraienement;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -32,12 +31,21 @@ public class entrainement {
         this.date = date;
     }
 
-    public entrainement(int id_entrainement, String type_entraienement, Date date) {
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public entrainement(int id_entrainement, Date date) { // constructor using field
         this.id_entrainement = id_entrainement;
-        this.type_entraienement = type_entraienement;
         this.date = date;
     }
 
-    public entrainement() {
+    public entrainement() {// default constructor , superclass contructor
     }
 }
+// hada rah mlih
+//bon courage , had had les colloc ta3 khra thnks a lot   merciiiiiiiiiiiiiiiiii arigato salaktni.

@@ -1,11 +1,31 @@
 package IRHD.Serviceentraienement.models;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "equipe", schema = "gestion")
 public class equipe {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id_equipe;
-    private String catégorie_equipe;
+    private String niveau;
+    private int age_inf;
+    private int age_sup;
     private int nombre_joueurs;
 
-    //l'ensemble des getters and setters
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_entraineur", referencedColumnName = "id_personne",  nullable=false)
+    private entraineur trainer;
+
+    public entraineur getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(entraineur trainer) {
+        this.trainer = trainer;
+    }
+
     public int getId_equipe() {
         return id_equipe;
     }
@@ -14,12 +34,28 @@ public class equipe {
         this.id_equipe = id_equipe;
     }
 
-    public String getCatégorie_equipe() {
-        return catégorie_equipe;
+    public String getNiveau() {
+        return niveau;
     }
 
-    public void setCatégorie_equipe(String catégorie_equipe) {
-        this.catégorie_equipe = catégorie_equipe;
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
+    }
+
+    public int getAge_inf() {
+        return age_inf;
+    }
+
+    public void setAge_inf(int age_inf) {
+        this.age_inf = age_inf;
+    }
+
+    public int getAge_sup() {
+        return age_sup;
+    }
+
+    public void setAge_sup(int age_sup) {
+        this.age_sup = age_sup;
     }
 
     public int getNombre_joueurs() {
@@ -30,15 +66,14 @@ public class equipe {
         this.nombre_joueurs = nombre_joueurs;
     }
 
-    //constructeur contenant toutes les entités
-    public equipe(int id_equipe, String catégorie_equipe, int nombre_joueurs) {
-        this.id_equipe = id_equipe;
-        this.catégorie_equipe = catégorie_equipe;
-        this.nombre_joueurs = nombre_joueurs;
-    }
-
-    // constructeur vide
     public equipe() {
     }
 
+    public equipe(String niveau, int age_inf, int age_sup, int nombre_joueurs) {
+        this.niveau = niveau;
+        this.age_inf = age_inf;
+        this.age_sup = age_sup;
+        this.nombre_joueurs = nombre_joueurs;
+    }
 }
+//win raho probleme
