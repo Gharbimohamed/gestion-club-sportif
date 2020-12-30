@@ -32,9 +32,6 @@ public class Joueur extends personne{
     public Joueur() {
     }
 
-    public Joueur(String position) {
-        this.position = position;
-    }
 
     public Joueur(int id_personne, String nom, String prenom, int age, String position) {
         super(id_personne, nom, prenom, age);

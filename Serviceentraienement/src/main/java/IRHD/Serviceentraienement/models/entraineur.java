@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Entraineur", schema = "gestion")
+
 public class entraineur extends personne {
 
     private String exeprience;
@@ -23,4 +24,8 @@ public class entraineur extends personne {
 
     }
 
+    public entraineur(int id_personne, String nom, String prenom, int age, String exeprience) {
+        super(id_personne, nom, prenom, age);
+        this.exeprience = exeprience;
+    }
 }

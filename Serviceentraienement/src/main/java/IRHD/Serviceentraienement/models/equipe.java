@@ -5,6 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "equipe", schema = "gestion")
+
 public class equipe {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -13,13 +14,22 @@ public class equipe {
     private int age_inf;
     private int age_sup;
     private int nombre_joueurs;
+    private String etat;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_entraineur", referencedColumnName = "id_personne",  nullable=false)
     private entraineur trainer;
 
     public entraineur getTrainer() {
         return trainer;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public String getEtat() {
+        return etat;
     }
 
     public void setTrainer(entraineur trainer) {

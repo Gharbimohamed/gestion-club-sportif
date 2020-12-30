@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.0</version>
+		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>IRHD</groupId>
-	<artifactId>Serviceentraienement</artifactId>
+	<artifactId>GestionDesinventaires</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Serviceentraienement</name>
+	<name>GestionDesinventaires</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -27,6 +27,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>

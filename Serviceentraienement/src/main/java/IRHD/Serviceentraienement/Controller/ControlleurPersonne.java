@@ -26,7 +26,7 @@ public class ControlleurPersonne {
         return metpers.listeejoueurs();
     }
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value="/addjoueur",method= RequestMethod.POST)
     public String Addjoueur(@RequestBody Joueur joueur){
 
@@ -34,6 +34,7 @@ public class ControlleurPersonne {
         repj.save(joueur);
         return" saved with succes";
     }
+
     @DeleteMapping(value = "/deletejoueur/{id}")
     public String deletejoueur(@PathVariable Integer id){
         Optional<Joueur> joueur= metpers.trouver(id);

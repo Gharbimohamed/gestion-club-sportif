@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface repositoryEquipe extends JpaRepository<equipe, Integer> {
-  //trés bien ,
+    //trés bien ,
     @Query("select distinct e from equipe e")
     List<equipe> listejoueurseqp();
 
