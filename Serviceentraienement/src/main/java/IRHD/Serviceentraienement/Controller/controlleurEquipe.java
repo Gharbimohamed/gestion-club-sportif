@@ -58,7 +58,6 @@ public class controlleurEquipe {
         }else{
             throw new RuntimeException("equipe introuvable");
         }
-
         return" deleted with succes";
     }
     @CrossOrigin(origins = "http://localhost:4200")
@@ -69,11 +68,11 @@ public class controlleurEquipe {
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value="/updateam/{id}")
-    public String updateteambbyid(@RequestBody equipe team, @PathVariable Integer id){
-        Optional<equipe> team1= metequip.trouver(id);
+    public String updateteambbyid( @PathVariable String id, @RequestBody equipe team){
+        Optional<equipe> team1= metequip.trouver(parseInt(id));
         System.out.println("gbhdfb;fngbjf");
         if(team1.isPresent()){
-            team.setId_equipe(id);
+            team.setId_equipe(parseInt(id));
             team.setNiveau(team.getNiveau());
             team.setAge_inf(team.getAge_inf());
             team.setAge_sup(team.getAge_sup());

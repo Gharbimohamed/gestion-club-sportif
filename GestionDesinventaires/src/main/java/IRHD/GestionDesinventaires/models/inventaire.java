@@ -14,6 +14,7 @@ public class inventaire {
     private TextArea descriptif;
 
 
+
     public int getId() {
         return id;
     }

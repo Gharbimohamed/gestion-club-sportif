@@ -26,13 +26,13 @@ public class ControlleurInventaire {
 
 
     @RequestMapping(value="/addinventaire",method= RequestMethod.POST)
-    public String AddEquipe(@RequestBody inventaire inventaire){
+    public String Addinventaire(@RequestBody inventaire inventaire){
         System.out.println("voila l'object que j'ai envoyé"+inventaire);
         repinv.save(inventaire);
         return" saved with succes";
     }
     @DeleteMapping(value = "/deleteinventaire/{id}")
-    public String deleteteam(@PathVariable Integer id){
+    public String deleteinventaire(@PathVariable Integer id){
         Optional<inventaire> team= metierinv.trouver(id);
         if(team.isPresent()){
             repinv.delete(team.get());
@@ -42,8 +42,8 @@ public class ControlleurInventaire {
 
         return" deleted with succes";
     }
-    @PutMapping(value="/updateam")
-    public String updateteam(@RequestBody inventaire inv){
+    @PutMapping(value="/updateam/{id}")
+    public String updateinventaire(@RequestBody inventaire inv){
         repinv.save(inv);
         return " updated with succes";
     }
