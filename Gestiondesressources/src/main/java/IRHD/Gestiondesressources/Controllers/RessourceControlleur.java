@@ -56,7 +56,7 @@ public class RessourceControlleur {
         if(team1.isPresent()){
             team.setId(parseInt(id));
             team.setNom_ressource(team.getNom_ressource());
-            team.setType(team.getType());
+            team.setType_ressource(team.getType_ressource());
             team.setMontant(team.getMontant());
             ressrep.save(team);
         }else{
@@ -70,7 +70,7 @@ public class RessourceControlleur {
 
     @RequestMapping(value="/addressource",method= RequestMethod.POST)
     public String Addressource(@RequestBody Ressources ressour){
-        System.out.println("voila l'object que j'ai envoyé"+ressour);
+        System.out.println("voila l'object que j'ai envoyé"+ressour.getType_ressource());
         ressrep.save(ressour);
         return" saved with succes";
     }
