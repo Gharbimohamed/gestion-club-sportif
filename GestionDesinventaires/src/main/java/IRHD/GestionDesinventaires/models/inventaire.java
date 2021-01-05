@@ -11,7 +11,7 @@ public class inventaire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date date;
-    private TextArea descriptif;
+    private String descriptif;
 
 
 
@@ -23,11 +23,11 @@ public class inventaire {
         this.id = id;
     }
 
-    public TextArea getDescriptif() {
+    public String getDescriptif() {
         return descriptif;
     }
 
-    public void setDescriptif(TextArea descriptif) {
+    public void setDescriptif(String descriptif) {
         this.descriptif = descriptif;
     }
 

@@ -18,8 +18,9 @@ public class ControlleurInventaire {
     @Autowired
     private repInventaire repinv;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/listeinventaires", method = RequestMethod.GET)
-    public List<inventaire> listeequip(){
+    public List<inventaire> listeinve(){
         return metierinv.listeinventaire();
     }
 

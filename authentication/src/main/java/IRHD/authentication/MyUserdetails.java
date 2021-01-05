@@ -1,30 +1,45 @@
 package IRHD.authentication;
 
+import IRHD.authentication.Models.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MyUserdetails implements UserDetails {
 
-    private String username;
+    private String userName;
+    private String password;
+    private boolean active;
+    private List<GrantedAuthority> authorties;
 
-    public MyUserdetails(String username){
-        this.username=username;
+    public MyUserdetails(User user){
+
+        this.userName=user.getUsername();
+        this.password=user.getPassword();
+        this.active=user.isActive();
+        this.authorties= Arrays.stream(user.getRole().split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorties;
     }
 
     @Override
     public String getPassword() {
-        return "pass";
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     @Override
@@ -44,6 +59,6 @@ public class MyUserdetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return active;
     }
 }
