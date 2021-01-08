@@ -1,0 +1,33 @@
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Niveau</label>
+      <input type="text" class="form-control" id="niveau" required [(ngModel)]="equipe.niveau" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">age sup</label>
+      <input type="NUMBER" class="form-control" id="lastName" required [(ngModel)]="equipe.age_sup" name="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">age inf</label>
+      <input type="NUMBER" class="form-control" id="emailId" required [(ngModel)]="equipe.age_inf" name="emailId">
+    </div>
+    <div class="form-group">
+      <label for="name">nombrejoueur</label>
+      <input type="number" class="form-control" id="nbrj" required [(ngModel)]="equipe.nombre_joueurs" name="emailId">
+    </div>
+    <div class="form-group">
+      <label for="name">TRAINER</label>
+      <input type="text" class="form-control" id="e" required [(ngModel)]="equipe.trainer"  >
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>

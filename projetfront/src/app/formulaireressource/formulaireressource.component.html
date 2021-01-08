@@ -1,0 +1,24 @@
+<h2>L'ajout d'une Ressource</h2>
+<div class="formuler" [hidden]="submitted" style="width: 50%; margin-left:25%; margin-top:12%;">
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom de la ressource :</label>
+      <input type="text" class="form-control" id="nom" required [(ngModel)]="ressource.nom_ressource" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Type de la ressource :</label>
+      <input type="text" class="form-control" id="prenom" required [(ngModel)]="ressource.type_ressource" name="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Montant versé :</label>
+      <input type="number" class="form-control" id="age" required [(ngModel)]="ressource.montant" name="emailId">
+    </div>
+
+
+    <button type="submit" class="btn btn-success" style="margin-left:45%; margin-top:10%;">Valider</button>
+  </form>
+</div>
+

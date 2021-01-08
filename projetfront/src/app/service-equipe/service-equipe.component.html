@@ -1,0 +1,83 @@
+<h2>La liste des Equipes</h2>
+<div id= "here" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" >
+    <!-- Name Column -->
+    <ng-container matColumnDef="id_equipe">
+      <th mat-header-cell *matHeaderCellDef> Identifiant </th>
+      <td mat-cell *matCellDef="let element" > {{element.id_equipe}} </td>
+    </ng-container>
+    <ng-container matColumnDef="niveau">
+      <th mat-header-cell *matHeaderCellDef> Niveau </th>
+      <td mat-cell *matCellDef="let element"> {{element.niveau}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="age_inf">
+      <th mat-header-cell *matHeaderCellDef> Age inferieur </th>
+      <td mat-cell *matCellDef="let element"> {{element.age_inf}} </td>
+    </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="age_sup">
+      <th mat-header-cell *matHeaderCellDef> Age superieur </th>
+      <td mat-cell *matCellDef="let element"> {{element.age_sup}} </td>
+    </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="nombre_joueurs">
+      <th mat-header-cell *matHeaderCellDef> Nombre de joueurs </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre_joueurs}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Modifier">
+      <th mat-header-cell *matHeaderCellDef>Action </th>
+      <td mat-cell *matCellDef="let element" >  <button type="button" class="btn btn-info"  (click)="openVerticallyCentered(element.id_equipe , content)" ><i class="fa fa-pencil-square" aria-hidden="true"></i>Modifier</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
+</div>
+<app-modalequipe></app-modalequipe>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Formulaire de modification d'une équipe</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div [hidden]="submitted" style="width: 400px;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Niveau</label>
+          <input type="text" class="form-control" id="niveau" required [(ngModel)]="team.niveau" name="firstName">
+        </div>
+
+        <div class="form-group">
+          <label for="name">age sup</label>
+          <input type="NUMBER" class="form-control" id="lastName" required [(ngModel)]="team.age_sup" name="lastName">
+        </div>
+
+        <div class="form-group">
+          <label for="name">age inf</label>
+          <input type="NUMBER" class="form-control" id="emailI" required [(ngModel)]="team.age_inf" name="emailId">
+        </div>
+        <div class="form-group">
+          <label for="name">nombrejoueur</label>
+          <input type="number" class="form-control" id="nbj" required [(ngModel)]="team.nombre_joueurs" name="emailId">
+        </div>
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+      <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+    </div>
+
+  </div>
+</ng-template>
+

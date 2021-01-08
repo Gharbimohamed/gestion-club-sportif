@@ -1,0 +1,20 @@
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Descriptif</label>
+      <input type="text" class="form-control" id="nom" required [(ngModel)]="inventaire.descriptif" name="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Date d'ajout</label>
+      <input type="date" class="form-control" id="prenom" required [(ngModel)]="inventaire.date" name="lastName">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
