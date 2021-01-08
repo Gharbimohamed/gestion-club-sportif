@@ -18,8 +18,8 @@ public class MetierPersonne implements MetierPersonneImpl {
     private RepositoryJoueur repojoueur;
 
     @Override
-    public List<Joueur> listeejoueurs() {
-        return repojoueur.findAll();
+    public List<Joueur> listeejoueurs(Integer id) {
+        return repojoueur.listejoueurs(id);
     }
 
     @Override

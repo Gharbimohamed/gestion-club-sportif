@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface MetierPersonneImpl {
 
-    public List<Joueur> listeejoueurs();
+    public List<Joueur> listeejoueurs(Integer id);
     public Optional<Joueur> trouver(Integer id);
 }

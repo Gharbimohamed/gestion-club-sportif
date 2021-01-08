@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import static java.lang.Integer.parseInt;
+
 @RestController
 public class ControlleurInventaire {
 
@@ -25,6 +27,11 @@ public class ControlleurInventaire {
     }
 
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/inventaire/{id}", method = RequestMethod.GET)
+    public Optional<inventaire> inventairebyid(@PathVariable String id){
+        return repinv.findById(parseInt(id));
+    }
 
     @RequestMapping(value="/addinventaire",method= RequestMethod.POST)
     public String Addinventaire(@RequestBody inventaire inventaire){

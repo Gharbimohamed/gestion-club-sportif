@@ -1,6 +1,7 @@
 package IRHD.Serviceentraienement.Controller;
 
 import IRHD.Serviceentraienement.metier.MetierEntraineur;
+import IRHD.Serviceentraienement.models.Joueur;
 import IRHD.Serviceentraienement.models.entraineur;
 import IRHD.Serviceentraienement.repository.RepositoryEntraineur;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,24 @@ public class ControlleurEntraineur {
     @PutMapping(value="/updatetrainer")
     public String updatetrainer(@RequestBody entraineur trainer){
         reptrainer.save(trainer);
+        return " updated with succes";
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping(value="/updatetrainer/{id}")
+    public String updateplayerbbyid( @PathVariable String id, @RequestBody entraineur team){
+        Optional<entraineur> team1= mettrainer.trouver(parseInt(id));
+        System.out.println("gbhdfb;fngbjf");
+        if(team1.isPresent()){
+            team.setId_personne(parseInt(id));
+            team.setNom(team.getNom());
+            team.setPrenom(team.getPrenom());
+            team.setExeprience(team.getExeprience());
+            team.setAge(team.getAge());
+            reptrainer.save(team);
+        }else{
+            throw new RuntimeException("equipe introuvable");
+        }
+
         return " updated with succes";
     }
 }
