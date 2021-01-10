@@ -23,4 +23,8 @@ export class InventaireService {
   addinventaire( inventaire: Inventaire): Observable<any> {
             return this.http.post(`http://localhost:8083/addinventaire`,inventaire);
   }
+  updateressource(id: string, equip: Inventaire): Observable<any>{
+
+                            return  this.http.put('http://localhost:8083/updateinventaire/'+id, equip);
+  }
 }

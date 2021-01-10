@@ -31,7 +31,7 @@
     </ng-container>
     <ng-container matColumnDef="Modifier">
       <th mat-header-cell *matHeaderCellDef> </th>
-      <td mat-cell *matCellDef="let element">  <button type="button" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i>Modifier</button></td>
+      <td mat-cell *matCellDef="let element">  <button type="button" class="btn btn-info" (click)="openVerticallyCentered(element.id , content)"><i class="fa fa-pencil-square" aria-hidden="true"></i>Modifier</button></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -40,4 +40,43 @@
 
   <mat-paginator [pageSizeOptions]="[6]" showFirstLastButtons></mat-paginator>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Formulaire de modification d'une ressource</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div [hidden]="submitted" style="width: 400px;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Nom de la ressource</label>
+          <input type="text" class="form-control" id="niveau" required [(ngModel)]="team.nom_ressource" name="firstName">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Type de la ressource</label>
+          <input type="text" class="form-control" id="lastName" required [(ngModel)]="team.type_ressource" name="lastName">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Montant</label>
+          <input type="NUMBER" class="form-control" id="emailI" required [(ngModel)]="team.montant" name="emailId">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
+    <div [hidden]="!submitted">
+      <h4>You submitted successfully!</h4>
+      <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+    </div>
+
+  </div>
+</ng-template>
 

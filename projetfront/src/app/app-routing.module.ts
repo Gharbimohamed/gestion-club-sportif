@@ -17,12 +17,14 @@ const routes: Routes = [
   {path: 'accueil', component: AccueilComponent,
       children: [
       {path: 'entraineur', component: ServiceEntraineurComponent},
+      {path: '', component: ServiceEntraineurComponent},
       {path: 'equipe', component: ServiceEquipeComponent},
       {path: 'joueurs', component: ServiceJoueurComponent},
       ],
       },
   {path: 'accueilinventaire', component: AccueilinventaireComponent,
   children: [
+        {path: '', component: ServiceInventaireComponent},
         {path: 'inventaire', component: ServiceInventaireComponent},
         {path: 'materiels', component: ServicematerielComponent},
         ],

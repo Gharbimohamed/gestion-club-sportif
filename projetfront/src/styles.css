@@ -3,3 +3,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-image: linear-gradient(rgb(152 152 241), rgb(234 234 234 / 65%)),url('assets/football.jpg');
                                                                      background-repeat: round;}
+    .add{
+      margin-left:44%;
+      margin-top: 5%;
+    }

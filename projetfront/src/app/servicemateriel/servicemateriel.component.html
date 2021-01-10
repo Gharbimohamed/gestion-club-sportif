@@ -32,7 +32,7 @@
     </ng-container>
     <ng-container matColumnDef="Modifier">
       <th mat-header-cell *matHeaderCellDef> </th>
-      <td mat-cell *matCellDef="let element" >  <button type="button" class="btn btn-info"  (click)="openVerticallyCentered(element.id_equipe , content)" ><i class="fa fa-pencil-square" aria-hidden="true"></i>Modifier</button></td>
+      <td mat-cell *matCellDef="let element" >  <button type="button" class="btn btn-info"  (click)="openVerticallyCentered(element.id, content)" ><i class="fa fa-pencil-square" aria-hidden="true"></i>Modifier</button></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -53,25 +53,26 @@
     <div [hidden]="submitted" style="width: 400px;">
       <form (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="name">Niveau</label>
-          <input type="text" class="form-control" id="niveau" required [(ngModel)]="team.niveau" name="firstName">
+          <label for="name">Date d'ajout</label>
+          <input type="date" class="form-control" id="typec" required [(ngModel)]="materiel.date_ajout" name="firstName">
         </div>
 
         <div class="form-group">
-          <label for="name">age sup</label>
-          <input type="NUMBER" class="form-control" id="lastName" required [(ngModel)]="team.age_sup" name="lastName">
+          <label for="name">Type du materiel</label>
+          <input type="text" class="form-control" id="type" required [(ngModel)]="materiel.type_materiel" name="type">
         </div>
 
         <div class="form-group">
-          <label for="name">age inf</label>
-          <input type="NUMBER" class="form-control" id="emailI" required [(ngModel)]="team.age_inf" name="emailId">
+          <label for="name">Nom du materiel</label>
+          <input type="text" class="form-control" id="niveau" required [(ngModel)]="materiel.nom_materiel" name="firstName">
         </div>
+
+
+
         <div class="form-group">
-          <label for="name">nombrejoueur</label>
-          <input type="number" class="form-control" id="nbj" required [(ngModel)]="team.nombre_joueurs" name="emailId">
+          <label for="name">Quantité</label>
+          <input type="number" class="form-control" id="lastName" required [(ngModel)]="materiel.quantite" name="lastName">
         </div>
-
-
         <button type="submit" class="btn btn-success">Submit</button>
       </form>
     </div>
@@ -83,4 +84,3 @@
 
   </div>
 </ng-template>
-

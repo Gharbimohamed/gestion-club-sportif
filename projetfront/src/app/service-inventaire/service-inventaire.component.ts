@@ -13,10 +13,10 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./service-inventaire.component.css']
 })
 export class ServiceInventaireComponent implements AfterViewInit {
-displayedColumns: string[] = ['id', 'date', 'descriptif','Action','Modifier'];
+displayedColumns: string[] = ['id', 'date', 'descriptif','Modifier'];
  // niveau: string;
    submitted = false;
- //  id : string;
+  id : string;
  constructor(private route: ActivatedRoute,
      private router: Router, private serviceInventaireServices: InventaireService, private modalService: NgbModal, private datePipe: DatePipe) { }
   closeResult: string;
@@ -24,7 +24,7 @@ displayedColumns: string[] = ['id', 'date', 'descriptif','Action','Modifier'];
   openVerticallyCentered(id: string, content) {
       this.modalService.open(content, { centered: true });
 
-    //  this.listequipesupdate(id);
+    this.listequipesupdate(id);
   }
   @ViewChild(MatPaginator) paginator: MatPaginator;
   async ngAfterViewInit() {
@@ -35,19 +35,28 @@ displayedColumns: string[] = ['id', 'date', 'descriptif','Action','Modifier'];
 
 
   dataSource = new MatTableDataSource<Inventaire>();
-  inventaire : Inventaire;
- /* public listequipesupdate(id : string){
+  inventaire = new Inventaire();
+  public listequipesupdate(id : string){
       this.id=id;
-      let resp = this.serviceEquipeServices.getequipebyid(id);
-      resp.subscribe( report => this.team = report)
-      console.log("liste equipe avant");
-      console.log(this.team)
+      let resp = this.serviceInventaireServices.getinventairebyid(id);
+      resp.subscribe( report => {
 
-  }*/
+      console.log(this.inventaire.date)
+      console.log(report.date)
+      this.inventaire = report
+      console.log(this.inventaire)
+      }
+      )
+      console.log("liste equipe avant");
+
+
+  }
     async listeinventaire(){
     let resp = this.serviceInventaireServices.getinventaire();
-    await resp.subscribe( report => {this.dataSource.data = report
-    //this.datePipe.transform(report.date,"yyyy-MM-dd")
+    await resp.subscribe( report => {
+    //this.datePipe.transform(report[0].date,"yyyy-MM-dd")
+    this.dataSource.data = report
+
     console.log(this.dataSource.data)
     console.log(this.dataSource.data)
 
@@ -65,4 +74,20 @@ displayedColumns: string[] = ['id', 'date', 'descriptif','Action','Modifier'];
          this.listeinventaire();
          window.location.reload();
     }
+  public updateressource(id: string, team : Inventaire) {
+        this.serviceInventaireServices.updateressource(id,team)
+          .subscribe(data => {
+            console.log("dkbd",data);
+            this.inventaire = new Inventaire();
+          }, error => console.log(error));
+  }
+    async onSubmit() {
+            this.submitted=true;
+            await this.updateressource(this.id,this.inventaire);
+        }
+    onReset() {
+          this.submitted = false;
+
+    }
+
 }

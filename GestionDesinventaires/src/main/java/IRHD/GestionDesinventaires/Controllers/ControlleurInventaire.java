@@ -55,4 +55,21 @@ public class ControlleurInventaire {
         repinv.save(inv);
         return " updated with succes";
     }
+    @PutMapping(value="/updateinventaire/{id}")
+    public String updateressourcebbyid( @PathVariable String id, @RequestBody inventaire team){
+        Optional<inventaire> team1= metierinv.trouver(parseInt(id));
+        System.out.println("gbhdfb;fngbjf");
+        if(team1.isPresent()){
+            if(team.getDate()!=null){
+                team.setDate(team.getDate());
+            }
+            team.setId(parseInt(id));
+            team.setDescriptif(team.getDescriptif());
+            repinv.save(team);
+        }else{
+            throw new RuntimeException("equipe introuvable");
+        }
+
+        return " updated with succes";
+    }
 }

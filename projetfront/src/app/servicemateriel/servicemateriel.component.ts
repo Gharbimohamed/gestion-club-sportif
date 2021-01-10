@@ -16,15 +16,31 @@ displayedColumns: string[] = ['id', 'nom_materiel', 'date_ajout', 'type_matterie
   niveau: string;
    submitted = false;
    id : string;
+   materiel = new MaterielsPedagogique();
  constructor(private route: ActivatedRoute,
      private router: Router, private materielpedagogiqueServices: MaterielsPedagogiqueService, private modalService: NgbModal) { }
 closeResult: string;
-
 openVerticallyCentered(id: string, content) {
       this.modalService.open(content, { centered: true });
 
-      //this.listequipesupdate(id);
+      this.listequipesupdate(id);
   }
+
+    public listequipesupdate(id : string){
+        this.id=id;
+        let resp = this.materielpedagogiqueServices.getmaterielbyid(id);
+        resp.subscribe( report => {
+
+       // console.log(this.materiel.date)
+        console.log(report.date)
+        this.materiel = report
+        console.log(this.materiel)
+        }
+        )
+        console.log("liste equipe avant");
+
+
+    }
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -51,4 +67,19 @@ openVerticallyCentered(id: string, content) {
          this.listemateriels();
          window.location.reload();
   }
+    public updateressource(id: string, team : MaterielsPedagogique) {
+          this.materielpedagogiqueServices.updatemateriel(id,team)
+            .subscribe(data => {
+              console.log("dkbd",data);
+              this.materiel= new MaterielsPedagogique();
+            }, error => console.log(error));
+    }
+      async onSubmit() {
+              this.submitted=true;
+              await this.updateressource(this.id,this.materiel);
+          }
+      onReset() {
+            this.submitted = false;
+
+      }
 }

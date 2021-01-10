@@ -22,4 +22,11 @@ export class RessourceService {
   login(userName: string, password: string): Observable<any>{
                              return this.http.get("http://localhost:8085/signin/"+userName+"/"+password);
   }
+  updateressource(id: string, equip: Ressource): Observable<any>{
+
+                            return  this.http.put('http://localhost:8084/updateressource/'+id, equip);
+  }
+        getressbyid( i: string): Observable<any> {
+            return this.http.get<Ressource>('http://localhost:8084/ressource/'+i);
+        }
 }

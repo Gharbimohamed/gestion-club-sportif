@@ -19,4 +19,11 @@ export class MaterielsPedagogiqueService {
   deletemateriel( i: number): Observable<any> {
             return this.http.delete(`http://localhost:8083/deletemateriel/${i}`,{ responseType: 'text'});
   }
+  updatemateriel(id: string, equip: MaterielsPedagogique): Observable<any>{
+
+                              return  this.http.put('http://localhost:8083/updatemateriel/'+id, equip);
+  }
+  getmaterielbyid(id: string):Observable<any> {
+          return this.http.get('http://localhost:8083/materiel/'+id);
+  }
 }
